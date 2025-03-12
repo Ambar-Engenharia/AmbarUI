@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logs do Backend</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 10px; }
+        #logs { white-space: pre-wrap; background: black; color: #0f0; padding: 10px; height: 500px; overflow-y: auto; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h2>Logs do Backend</h2>
+    <div id="logs"></div>
+
+    <script>
+        console.log("Logs HTML carregado."); // Teste para garantir que a página carregou
+
+        window.electronAPI.onBackendLog((log) => {
+            console.log("Recebido log:", log); // Debug no console do navegador
+            const logsDiv = document.getElementById("logs");
+            logsDiv.innerHTML += log + "<br>";
+            logsDiv.scrollTop = logsDiv.scrollHeight; // Auto scroll
+        });
+    </script>
+</body>
+</html>

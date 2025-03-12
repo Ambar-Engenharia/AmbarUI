@@ -11,5 +11,6 @@ contextBridge.exposeInMainWorld('electronAPI', {
     openCopel: () => ipcRenderer.send('open-copel'),
     openRGE: () => ipcRenderer.send('open-rge'),
     runServices: (serviceNome) => ipcRenderer.send('executar-services', serviceNome),
+    onBackendLog: (callback) => ipcRenderer.on("backend-log", (_event, log) => callback(log))
     // onScriptOutput: (callback) => ipcRenderer.on("script-output", (_event, output) => callback(output))
 });
